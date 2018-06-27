@@ -30,9 +30,9 @@ public class BankOperationsDAO implements IBankOperationsDao {
 				SQLIntegrityConstraintViolationException {
 
 		String hashConv = "";
-		;
 		try {
 			hashConv = hash.SHA1(registerVO.getPwd());
+			System.out.println("HashConverted-->"+hashConv);
 		} catch (NoSuchAlgorithmException e) {
 
 			e.printStackTrace();
@@ -46,6 +46,7 @@ public class BankOperationsDAO implements IBankOperationsDao {
 		jdbcTemplate.update(sql, registerVO.getUsername(), hashConv);
 		}
 		catch(Exception e) {
+			System.out.println("Exception in Registration:"+e);
 			throw new SQLIntegrityConstraintViolationException();
 		}
 	}
