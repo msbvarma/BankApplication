@@ -1,0 +1,18 @@
+Problem Statement:
+
+Any user should be able to register to this service
+All registered users can get the list of banks that are supported by this service
+User can pick one of the bank and find the metadata about that bank, metadata includes
+What are the credentials needed to get access the bank website example username/password
+User can provide the necessary credentials and collect all the bank accounts available in the bank & also its associated transactions
+              Example: Saving account and its attributes and the credit / debit transactions
+
+ 
+
+Notes:
+
+Bank can be mocked using an html based application
+Bank data can be hard coded in the html application
+Any approach can be used to collect the data from Bank (such as screen scraping or REST API)
+Use mysql as backend to store the data, use maven as a build platform, preferably code with Spring or Spring Boot
+ 

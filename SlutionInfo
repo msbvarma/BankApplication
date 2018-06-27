@@ -1,0 +1,28 @@
+Based on the problem statement I have built various services to achieve the solution.
+Technologies used:
+                    Spring boot
+                    Java
+                    mySQL
+                    Maven
+    
+Assumption 1:
+    User data and Account details are stored in Data base.
+Assumption 2:
+    We need to give the response to the UI /calling source, they will show to end user.
+Services:
+Any user should be able to register to this service
+                URL: http://localhost:8080/bankapp/register - POST service.
+
+All registered users can get the list of banks that are supported by this service
+                URL: http://localhost:8080/bankapp/ getBankData - POST service            
+
+User can pick one of the bank and find the metadata about that bank, metadata includes
+What are the credentials needed to get access the bank website example username/password
+            
+                URL: http://localhost:8080/bankapp/getBankMetaData  - POST service 
+                Note: Assumption is SSO is enabled in this application to get the data
+
+User can provide the necessary credentials and collect all the bank accounts available in the bank & also its associated transactions
+                URL: http://localhost:8080/bankapp/getAccountDetails   - POST service 
+                Intern it calls the below Rest service
+                http://localhost:8080/bankdata/getAccountData             
