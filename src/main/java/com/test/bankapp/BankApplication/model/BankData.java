@@ -1,16 +1,17 @@
+
 package com.test.bankapp.BankApplication.model;
 
-public class BankData extends ResponseVO {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class BankData{
 
 	private String bankName;
 	private String bankId;
-	/*private BankMetaDataResponse metaData;
-	public BankMetaDataResponse getMetaData() {
-		return metaData;
-	}
-	public void setMetaData(BankMetaDataResponse metaData) {
-		this.metaData = metaData;
-	}*/
+	
 	public String getBankName() {
 		return bankName;
 	}

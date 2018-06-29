@@ -1,6 +1,10 @@
 package com.test.bankapp.BankApplication.model;
 
-public class BankMetaDataResponse extends ResponseVO{
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_NULL)
+public class BankMetaDataResponse{
 
 	private String UserName;
 	private String Password;

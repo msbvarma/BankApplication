@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.test.bankapp.BankApplication.dao.BankOperationsDAO;
+import com.test.bankapp.BankApplication.model.AccountDataRowMapper;
 import com.test.bankapp.BankApplication.model.AccountDataVO;
 import com.test.bankapp.BankApplication.model.BankData;
 import com.test.bankapp.BankApplication.model.BankMetaDataResponse;
@@ -70,7 +71,7 @@ GetBankDetailsRestServiceImpl getBankDetailsRestService;
 		data2.setBankId("SBI0090");
 		
 		BankData data3 = new BankData();
-		data3.setBankName("Citi");
+		data3.setBankName("CITI");
 		data3.setBankId("CITI0090");
 
 		bankList.add(data1);
@@ -100,8 +101,11 @@ GetBankDetailsRestServiceImpl getBankDetailsRestService;
 		data2.setPassword("password");
 		data2.setURL("http://citibank.com/login");
 
+		if(bankData.getBankName().contains("ICIC"))
 		bankList.add(data1);
+		else if(bankData.getBankName().contains("CITI"))
 		bankList.add(data2);
+		else if(bankData.getBankName().contains("SBI"))
 		bankList.add(data3);
 		
 		return bankList;
@@ -116,6 +120,7 @@ GetBankDetailsRestServiceImpl getBankDetailsRestService;
 	//Getbank details from DAO and return to rest service
 	@Override
 	public List<AccountDataVO> getAccountData(BankData bankData) {
+		System.out.println("In get account data-->");
 		List<AccountDataVO> acctList = new ArrayList<>();
 		acctList = bankOperationsDAO.getAccountData(bankData);
 		return acctList;

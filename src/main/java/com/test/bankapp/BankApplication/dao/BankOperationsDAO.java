@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.test.bankapp.BankApplication.model.AccountDataRowMapper;
 import com.test.bankapp.BankApplication.model.AccountDataVO;
 import com.test.bankapp.BankApplication.model.BankData;
 import com.test.bankapp.BankApplication.model.LoginVO;
@@ -32,7 +33,6 @@ public class BankOperationsDAO implements IBankOperationsDao {
 		String hashConv = "";
 		try {
 			hashConv = hash.SHA1(registerVO.getPwd());
-			System.out.println("HashConverted-->"+hashConv);
 		} catch (NoSuchAlgorithmException e) {
 
 			e.printStackTrace();
@@ -72,8 +72,9 @@ public class BankOperationsDAO implements IBankOperationsDao {
 	}
 	@Override
 	public  List<AccountDataVO> getAccountData(BankData bankdata) {
-			   String sql = "SELECT accountName, acctId, type,bal,creditReport,debitReport FROM ACCOUNTDETAILS";
-			   RowMapper<AccountDataVO> rowMapper = new BeanPropertyRowMapper<AccountDataVO>(AccountDataVO.class);		
-			   return this.jdbcTemplate.query(sql, rowMapper);
+		System.out.println("Getting bank dtails for:"+bankdata.getBankId());
+			   String sql = "SELECT  acctId,accountName, type,bal,creditReport,debitReport FROM ACCOUNTDETAILS where bankId=?";
+			   RowMapper<AccountDataVO> rowMapper = new AccountDataRowMapper();		
+			   return this.jdbcTemplate.query(sql, rowMapper,bankdata.getBankId());
 	}
 }

@@ -2,7 +2,7 @@ package com.test.bankapp.BankApplication.model;
 
 public class Acct {
 private String type;
-private long  bal;
+private String  bal;
 private String creditReport;
 private String debitReport;
 public String getType() {
@@ -11,10 +11,10 @@ public String getType() {
 public void setType(String type) {
 	this.type = type;
 }
-public long getBal() {
+public String getBal() {
 	return bal;
 }
-public void setBal(long bal) {
+public void setBal(String bal) {
 	this.bal = bal;
 }
 public String getCreditReport() {

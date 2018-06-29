@@ -1,6 +1,15 @@
 package com.test.bankapp.BankApplication.model;
 
-public class AccountDataVO {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_NULL)
+public class AccountDataVO implements RowMapper{
 
 	private String accountName;
 	private String acctId;
@@ -30,5 +39,10 @@ public class AccountDataVO {
 	}
 	public void setAcctId(String acctId) {
 		this.acctId = acctId;
+	}
+	@Override
+	public Object mapRow(ResultSet arg0, int arg1) throws SQLException {
+		
+		return null;
 	}
 }
